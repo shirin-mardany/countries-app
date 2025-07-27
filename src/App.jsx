@@ -16,14 +16,14 @@ export default function App() {
           width: "100%",
           // minWidth: "0",
           maxWidth: "100%",
-          bgcolor: "#152024",
-          px: "50px",
+          bgcolor: "hsl(207, 26%, 17%)",
+          px: { xs: 3, sm: 3, md: 4 },
           // border: "3px solid #6c5bb1",
         }}
       >
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/country-page/:alpha2Code" element={<CountryPage />} />
+          <Route path="/country-page/:alpha3Code" element={<CountryPage />} />
         </Routes>
       </Box>
     </>

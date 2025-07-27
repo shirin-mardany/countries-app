@@ -1,19 +1,26 @@
-import { Box, Stack, Typography } from '@mui/material'
-import React from 'react'
+import { Box, Stack, Typography } from "@mui/material";
+// import React, {useState } from "react";
+// icon mode 
+import DarkModeIcon from "@mui/icons-material/DarkMode";
+import LightModeIcon from "@mui/icons-material/LightMode";
 
 export default function Navbar() {
+  //state for dark mode 
+  // const [darkMode, setDarkMode] = useState(false);
+  
+  
+
   return (
     <Stack
-      // mt={"20px"}
       sx={{
         px: "80px",
         width: "100%",
         height: "60px",
-        bgcolor: "#44626c",
-        // borderRadius: "10px",
-        //   border: "3px solid #25bc76",
+        bgcolor: "hsl(209, 23%, 22%)",
+        color: " hsl(0, 0%, 100%)",
+        textAlign: "center",
         flexDirection: "row",
-              justifyContent: "space-between",
+        justifyContent: "space-between",
         alignItems: "center",
       }}
     >
@@ -23,6 +30,8 @@ export default function Navbar() {
         </Typography>
       </Box>
       <Box>
+        <LightModeIcon />
+        <DarkModeIcon />
         <Typography gutterBottom variant="h5" component="div">
           Mode
         </Typography>

@@ -29,12 +29,12 @@ export default function HomePage() {
   //map countries data to display
   const countryList = countries?.map((country) => (
     <Link
-      key={country.alpha2Code}
-      to={`/country-page/${country.alpha2Code}`}
+      key={country.alpha3Code}
+      to={`/country-page/${country.alpha3Code}`}
       style={{ textDecoration: "none" }}
     >
       <CountryCard
-        key={country.alpha2Code}
+        key={country.alpha3Code}
         name={country.name}
         capital={country.capital}
         region={country.region}

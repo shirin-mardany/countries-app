@@ -35,34 +35,52 @@ export default function CountryCard({
         title={name}
       />
       {/* --- card content --- */}
-      <CardContent>
-        <Typography gutterBottom variant="h5" component="div">
+      <CardContent
+        sx={{
+          bgcolor: "hsl(209, 23%, 22%)",
+          color: " hsl(0, 0%, 100%)",
+        }}
+      >
+        <Typography gutterBottom variant="h6" component="div">
           {name}
         </Typography>
-        <Typography variant="body2" sx={{ color: "text.secondary" }}>
-          population: {population}
+        <Typography variant="body2">
+          <span style={{ fontWeight: 500 }}>population:</span>
+          <span
+            style={{
+              fontWeight: 200,
+              marginLeft: 4,
+              color: " hsla(0, 0%, 100%, 0.708)",
+            }}
+          >
+            {population}
+          </span>
         </Typography>
-        <Typography variant="body2" sx={{ color: "text.secondary" }}>
-          region: {region}
+        <Typography variant="body2">
+          <span style={{ fontWeight: 500 }}>region::</span>
+          <span
+            style={{
+              fontWeight: 200,
+              marginLeft: 4,
+              color: " hsla(0, 0%, 100%, 0.708)",
+            }}
+          >
+            {region}
+          </span>
         </Typography>
-        <Typography variant="body2" sx={{ color: "text.secondary" }}>
-          capital: {capital}
+        <Typography variant="body2">
+          <span style={{ fontWeight: 500 }}>capital::</span>
+          <span
+            style={{
+              fontWeight: 200,
+              marginLeft: 4,
+              color: " hsla(0, 0%, 100%, 0.708)",
+            }}
+          >
+            {capital || "No capital"}
+          </span>
         </Typography>
       </CardContent>
-      {/* --- card actions --- */}
-      {/* <CardActions>
-        <Button
-          size="small"
-          sx={{
-            color: "#bc6c25",
-            fontWeight: "bold",
-            border: "2px solid #bc6c25",
-            borderRadius: 3,
-          }}
-        >
-          {capital}
-        </Button>
-      </CardActions> */}
     </Card>
   );
 }
