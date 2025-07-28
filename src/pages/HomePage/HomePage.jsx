@@ -100,19 +100,19 @@ export default function HomePage() {
           sx={{
             boxShadow: "0 2px 6px rgba(0, 0, 0, 0.15)",
             borderRadius: "8px",
-            bgcolor: "hsl(209, 23%, 22%)",
+            bgcolor: "background.paper",
             pl: "30px",
             pb: "12px",
             width: { xs: "100%", md: "40%" },
             "& .MuiInputBase-input": {
-              color: "white",
+              color: "text.primary",
             },
             "& .MuiInputLabel-root": {
-              color: "white",
+              color: "text.primary",
               marginLeft: "72px",
             },
             "& .MuiInputLabel-root.Mui-focused": {
-              color: "#bdbdbdb6",
+              color: "text.primary",
             },
             "& .MuiInput-underline:before": {
               borderBottom: "none",
@@ -130,8 +130,9 @@ export default function HomePage() {
         <FormControl
           sx={{
             width: { xs: "60%", md: "25%" },
-            mt: { xs:5 ,md:0},
+            mt: { xs: 5, md: 0 },
             mb: 2,
+            boxShadow: "0 2px 6px rgba(0, 0, 0, 0.15)",
           }}
         >
           <Select
@@ -142,8 +143,8 @@ export default function HomePage() {
               selected ? selected : "Filter by Region"
             }
             sx={{
-              color: "hsl(0, 0%, 100%)",
-              bgcolor: "hsl(209, 23%, 22%)",
+              color: "text.primary",
+              bgcolor: "background.paper",
               "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
                 border: "none",
               },
@@ -154,8 +155,8 @@ export default function HomePage() {
             MenuProps={{
               PaperProps: {
                 sx: {
-                  bgcolor: "hsl(209, 23%, 22%)",
-                  color: "hsl(0, 0%, 100%)",
+                  bgcolor: "background.paper",
+                  color: "text.primary",
                   boxShadow: "none",
                   border: "none",
                 },
@@ -166,8 +167,8 @@ export default function HomePage() {
               // key="all"
               value=""
               sx={{
-                color: "hsl(0, 0%, 100%)",
-                bgcolor: "hsl(209, 23%, 22%)",
+                color: "text.primary",
+                bgcolor: "background.paper",
               }}
             >
               All Countries
@@ -177,8 +178,8 @@ export default function HomePage() {
                 key={region}
                 value={region}
                 sx={{
-                  color: "hsl(0, 0%, 100%)",
-                  bgcolor: "hsl(209, 23%, 22%)",
+                  color: "text.primary",
+                  bgcolor: "background.paper",
                 }}
               >
                 {region}
