@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import data from "../../data/data.json";
+import { Link } from "react-router-dom";
 
 //helpers
 import { formatPopulation } from "../../utils/helpers";
 import CountryCard from "./Card/Card";
+// mui
 import {
   Box,
   FormControl,
@@ -14,22 +16,20 @@ import {
   TextField,
 } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
-import { Link } from "react-router-dom";
+// _____________________________________________________________________
 export default function HomePage() {
-  //states-------------
-  //state for countries data
+  //state for countries data---------
   const [countries, setCountries] = useState([]);
   //state for serch countries-------
   const [serch, setSerch] = useState("");
 
   //state for region
-  const [region, setRegion] = useState(" Filter by Region");
+  const [region, setRegion] = useState("");
 
   //create an array of regions without repetitions ---------
-  const regions = [
-    " Filter by Region",
-    ...Array.from(new Set(data.map((c) => c.region))),
-  ];
+  const regions = Array.from(new Set(data.map((c) => c.region))).sort((a, b) =>
+    a.localeCompare(b)
+  );
 
   //useEffect----------------------
   useEffect(() => {
@@ -44,7 +44,7 @@ export default function HomePage() {
   const filteredCountries = countries.filter(
     (country) =>
       country.name.toLowerCase().includes(serch.toLowerCase()) &&
-      (region === " Filter by Region" || country.region === region)
+      (region === "" || country.region === region)
   );
 
   //map countries data to display-------------
@@ -71,54 +71,16 @@ export default function HomePage() {
       {/* header stack--------- */}
       <Stack
         sx={{
+          // border: " 1px solid red",
           width: "100%",
-          // height: "100px",
-          // bgcolor: "hsl(209, 23%, 22%)",
-          // border: "1px solid #257bbc",
           display: "flex",
-          alignItems: "center",
+          alignItems: { xs: "start", md: "center" },
           justifyContent: "space-between",
           flexDirection: { xs: "column", md: "row" },
         }}
       >
         {/* serch input --------- */}
-        {/* <Box
-          sx={{
-            position: "relative",
-            width: { xs: "100%", md: "35%" },
-            maxWidth: "50%",
-          }}
-        >
-          <SearchIcon
-            style={{
-              position: "absolute",
-              left: "16px",
-              top: "50%",
-              transform: "translateY(-50%)",
-              color: "#bdbdbd",
-              fontSize: "1.7rem",
-              pointerEvents: "none",
-            }}
-          />
-          <input
-            type="search"
-            placeholder="Search for a country..."
-            value={serch}
-            onChange={(e) => setSerch(e.target.value)}
-            style={{
-              width: "100%",
-              padding: "12px 16px 12px 48px",
-              background: "hsl(209, 23%, 22%)",
-              color: "white",
-              border: "none",
-              borderRadius: "8px",
-              fontSize: "1rem",
-              outline: "none",
-              boxSizing: "border-box",
-            }}
-          />
-        </Box> */}
-        {/* ---------------------------- */}
+
         <TextField
           label="Search for a country ..."
           variant="standard"
@@ -136,7 +98,6 @@ export default function HomePage() {
             ),
           }}
           sx={{
-            // border: "1px solid #257bbc",
             boxShadow: "0 2px 6px rgba(0, 0, 0, 0.15)",
             borderRadius: "8px",
             bgcolor: "hsl(209, 23%, 22%)",
@@ -148,10 +109,10 @@ export default function HomePage() {
             },
             "& .MuiInputLabel-root": {
               color: "white",
-              marginLeft: "62px",
+              marginLeft: "72px",
             },
             "& .MuiInputLabel-root.Mui-focused": {
-              color: "#bdbdbdb6", // رنگ طوسی برای label در حالت فوکس
+              color: "#bdbdbdb6",
             },
             "& .MuiInput-underline:before": {
               borderBottom: "none",
@@ -168,80 +129,68 @@ export default function HomePage() {
         {/* select box -------- */}
         <FormControl
           sx={{
-            width: { xs: "100%", md: "25%" },
-            mt: 2,
+            width: { xs: "60%", md: "25%" },
+            mt: { xs:5 ,md:0},
             mb: 2,
-            bgcolor:
-              "hsl(94.94117647058825, 75.22123893805312%, 44.31372549019608%)",
           }}
         >
-          {/* <InputLabel id="region-select-label" sx={{ color: "white" }}>
-            Filter by Region
-          </InputLabel> */}
           <Select
-            labelId="region-select-label"
-            id="region-select"
             value={region}
-            label="Filter by Region"
+            displayEmpty
             onChange={(e) => setRegion(e.target.value)}
-            sx={{ color: "white" }}
+            renderValue={(selected) =>
+              selected ? selected : "Filter by Region"
+            }
+            sx={{
+              color: "hsl(0, 0%, 100%)",
+              bgcolor: "hsl(209, 23%, 22%)",
+              "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
+                border: "none",
+              },
+              "& .MuiOutlinedInput-notchedOutline": {
+                border: "none",
+              },
+            }}
+            MenuProps={{
+              PaperProps: {
+                sx: {
+                  bgcolor: "hsl(209, 23%, 22%)",
+                  color: "hsl(0, 0%, 100%)",
+                  boxShadow: "none",
+                  border: "none",
+                },
+              },
+            }}
           >
+            <MenuItem
+              // key="all"
+              value=""
+              sx={{
+                color: "hsl(0, 0%, 100%)",
+                bgcolor: "hsl(209, 23%, 22%)",
+              }}
+            >
+              All Countries
+            </MenuItem>
             {regions.map((region) => (
-              <MenuItem key={region} value={region} sx={{ color: "black" }}>
+              <MenuItem
+                key={region}
+                value={region}
+                sx={{
+                  color: "hsl(0, 0%, 100%)",
+                  bgcolor: "hsl(209, 23%, 22%)",
+                }}
+              >
                 {region}
               </MenuItem>
             ))}
           </Select>
         </FormControl>
       </Stack>
-      {/* -------------------------------- */}
-      {/* <TextField
-          label="Search for a country ..."
-          variant="standard"
-          type="search"
-          value={serch}
-          onChange={(e) => setSerch(e.target.value)}
-          InputLabelProps={{
-            shrink: !!serch, // فقط زمانی لیبل بره بالا که چیزی نوشته شده
-      
-          }}
-          InputProps={{
-            startAdornment: (
-              <InputAdornment position="start">
-                <SearchIcon sx={{ color: "#bdbdbd",fontSize:"2rem" }} />
-              </InputAdornment>
-            ),
-          }}
-          sx={{
-            pl: "2%",
-            // placeholder: "Search for a country ...",
-            bgcolor: "hsl(209, 23%, 22%)",
-            color: "white",
-            height: "70%",
-            width: { xs: "100%", md: "40%" },
-            "& .MuiInputBase-input": {
-              color: "white",
-            },
-            "& .MuiInputLabel-root": {
-              color: "white",
-              marginLeft: "15%",
-            },
-            "& .MuiInput-underline:before": {
-              borderBottom: "none",
-            },
-            "& .MuiInput-underline:after": {
-              borderBottom: "none",
-            },
-            "& .MuiInput-underline:hover:not(.Mui-disabled):before": {
-              borderBottom: "none",
-            },
-          }}
-        />  */}
+
       {/* body box --------------- */}
       <Box
         sx={{
-          // border: "3px solid #48bc25",
-
           display: "flex",
           flexDirection: "row",
           flexWrap: "wrap",
