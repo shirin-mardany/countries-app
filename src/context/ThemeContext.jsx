@@ -7,7 +7,7 @@ const ThemeProvider = ({ children }) => {
   const toggleTheme = () =>
     setTheme((prev) => (prev === "light" ? "dark" : "light"));
   useEffect(() => {
-    localStorage.setItem("them", theme);
+    localStorage.setItem("theme", theme);
   }, [theme]);
   return (
     <ThemeContext.Provider value={{ theme, toggleTheme}}>

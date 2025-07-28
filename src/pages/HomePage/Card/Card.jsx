@@ -1,11 +1,9 @@
 import * as React from "react";
 import Card from "@mui/material/Card";
-import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
-import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
-// import { Link } from "react-router-dom";
+
 
 export default function CountryCard({
   name,
@@ -14,14 +12,13 @@ export default function CountryCard({
   population,
   img,
 }) {
+
   return (
     <Card
       sx={{
         width: 270,
         height: 340,
-        // borderRadius: 1,
-
-        bgcolor: "#f4f1de",
+        bgcolor: "background.paper",
       }}
     >
       {/* --- card img --- */}
@@ -29,7 +26,6 @@ export default function CountryCard({
         sx={{
           height: "50%",
           width: "100%",
-          //   borderRadius: 3,
         }}
         image={img}
         title={name}
@@ -39,8 +35,8 @@ export default function CountryCard({
         sx={{
           height: "50%",
           width: "100%",
-          bgcolor: "hsl(209, 23%, 22%)",
-          color: " hsl(0, 0%, 100%)",
+          color: "text.primary",
+          bgcolor: "background.paper",
         }}
       >
         <Typography gutterBottom variant="h6" component="div">
@@ -52,31 +48,31 @@ export default function CountryCard({
             style={{
               fontWeight: 200,
               marginLeft: 4,
-              color: " hsla(0, 0%, 100%, 0.708)",
+              color: "text.primary",
             }}
           >
             {population}
           </span>
         </Typography>
         <Typography variant="body2">
-          <span style={{ fontWeight: 500 }}>region::</span>
+          <span style={{ fontWeight: 500 }}>region:</span>
           <span
             style={{
               fontWeight: 200,
               marginLeft: 4,
-              color: " hsla(0, 0%, 100%, 0.708)",
+              color: "text.primary",
             }}
           >
             {region}
           </span>
         </Typography>
         <Typography variant="body2">
-          <span style={{ fontWeight: 500 }}>capital::</span>
+          <span style={{ fontWeight: 500 }}>capital:</span>
           <span
             style={{
               fontWeight: 200,
               marginLeft: 4,
-              color: " hsla(0, 0%, 100%, 0.708)",
+              color: "text.primary",
             }}
           >
             {capital || "No capital"}

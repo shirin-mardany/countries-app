@@ -26,6 +26,7 @@ const darkTheme = createTheme({
     },
     text: {
       primary: "hsl(0, 0%, 100%)", // White (Dark Mode Text)
+      secondary: "hsl(0, 0%, 52%)",
     },
   },
 });

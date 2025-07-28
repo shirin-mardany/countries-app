@@ -71,7 +71,6 @@ export default function HomePage() {
       {/* header stack--------- */}
       <Stack
         sx={{
-          // border: " 1px solid red",
           width: "100%",
           display: "flex",
           alignItems: { xs: "start", md: "center" },
@@ -192,6 +191,7 @@ export default function HomePage() {
       {/* body box --------------- */}
       <Box
         sx={{
+      
           display: "flex",
           flexDirection: "row",
           flexWrap: "wrap",
