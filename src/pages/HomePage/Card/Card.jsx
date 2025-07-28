@@ -17,8 +17,8 @@ export default function CountryCard({
   return (
     <Card
       sx={{
-        width: 240,
-        height: 250,
+        width: 270,
+        height: 340,
         // borderRadius: 1,
 
         bgcolor: "#f4f1de",
@@ -37,6 +37,8 @@ export default function CountryCard({
       {/* --- card content --- */}
       <CardContent
         sx={{
+          height: "50%",
+          width: "100%",
           bgcolor: "hsl(209, 23%, 22%)",
           color: " hsl(0, 0%, 100%)",
         }}

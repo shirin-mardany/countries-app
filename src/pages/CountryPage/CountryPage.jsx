@@ -22,13 +22,13 @@ export default function CountryPage() {
 
   //find the country data based on alpha3Code ------------
   const country = data.find((c) => c.alpha3Code === alpha3Code);
-  console.log(country);
+  console.log("country", country);
 
   //find border countries data -----------------
   const borderCountries = country?.borders?.map((borderCode) =>
     data.find((c) => c.alpha3Code === borderCode)
   ); //it's an array of objects
-  console.log(borderCountries);
+  console.log("borderCountries", borderCountries);
 
   // create btn for ech border country-------------
   const borderButtons = borderCountries?.map((borderCountry) => (
@@ -63,6 +63,27 @@ export default function CountryPage() {
     marginLeft: 4,
     color: " hsla(0, 0%, 100%, 0.708)",
   };
+
+  // const cardStyle = {
+  //   p: 0,
+  //   width: { xs: "100%", md: "50%" },
+  //   height: { xs: "50%", md: "100%" },
+  //   color: " hsl(0, 0%, 100%)",
+  //   display: "flex",
+  //   flexDirection: { xs: "column", md: "row" },
+  //   justifyContent: { xs: "space-between", md: "space-evenly" },
+  //   alignItems: "start",
+  // };
+
+  // const cardMediaStyle = {
+  //   width: { xs: "327px", md: "50%" }, //===
+  //   // width: { xs: "100%", md: "50%" },
+  //   // height: { xs: "30%", md: "100%" },
+  //   height: { xs: "200px", md: "100%" }, //===
+  //   objectFit: "cover",
+  //   bgcolor: "hsl(209, 23%, 22%)",
+  //   mb: { xs: 4, md: 0 },
+  // };
   return (
     <Stack
       sx={{
@@ -83,9 +104,7 @@ export default function CountryPage() {
         sx={{
           width: "100%",
           height: "10%",
-          // bgcolor:
-          //   "hsl(207.88732394366195, 58.67768595041321%, 76.27450980392156%)",
-          display: "flex",
+         display: "flex",
           justifyContent: "flex-start",
           color: "white",
           mb: { xs: 3, md: 0 }, //===
@@ -130,6 +149,7 @@ export default function CountryPage() {
             objectFit: "cover",
             bgcolor: "hsl(209, 23%, 22%)",
             mb: { xs: 4, md: 0 },
+            // ...cardMediaStyle,
           }}
           image={country?.flags?.svg || country?.flags?.png}
           alt={country?.name}
@@ -139,12 +159,12 @@ export default function CountryPage() {
             p: 0,
             width: { xs: "100%", md: "50%" },
             height: { xs: "50%", md: "100%" },
-            // bgcolor: "hsl(209, 23%, 22%)",
             color: " hsl(0, 0%, 100%)",
             display: "flex",
             flexDirection: { xs: "column", md: "row" },
             justifyContent: { xs: "space-between", md: "space-evenly" },
             alignItems: "start",
+            // ...cardStyle,
           }}
         >
           <Box

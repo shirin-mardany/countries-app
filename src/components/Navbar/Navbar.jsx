@@ -13,26 +13,36 @@ export default function Navbar() {
   return (
     <Stack
       sx={{
-        px: "80px",
+        px: { xs: 2, sm: 3, md: 10 },
         width: "100%",
-        height: "60px",
+        height: "80px",
         bgcolor: "hsl(209, 23%, 22%)",
         color: " hsl(0, 0%, 100%)",
-        textAlign: "center",
+        display: "flex",
         flexDirection: "row",
         justifyContent: "space-between",
         alignItems: "center",
       }}
     >
-      <Box>
-        <Typography gutterBottom variant="h5" component="div">
-          Where in the world?
-        </Typography>
-      </Box>
-      <Box>
+      {/* <Box sx={{width:"100%",bgcolor:"pink", display: "flex", justifyContent: "space-between", alignItems: "center" }}> */}
+      <Typography
+        gutterBottom
+        variant="h5"
+        component="div"
+        sx={{
+        
+          fontSize: { xs: "1rem", md: "1.5rem" },
+          fontWeight: 600,
+          letterSpacing: "1px",
+        }}
+      >
+        Where in the world?
+      </Typography>
+      {/* </Box> */}
+      <Box sx={{ display: "flex", alignItems: "center", gap: "10px" }}>
         <LightModeIcon />
-        <DarkModeIcon />
-        <Typography gutterBottom variant="h5" component="div">
+        {/* <DarkModeIcon /> */}
+        <Typography gutterBottom variant="h5" component="div" sx={{ fontSize: { xs: "0.8rem", md: "1rem" },fontWeight:200 }}>
           Mode
         </Typography>
       </Box>
