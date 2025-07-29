@@ -13,6 +13,7 @@ export default function CountryCard({
   img,
 }) {
 
+
   return (
     <Card
       sx={{
@@ -37,46 +38,52 @@ export default function CountryCard({
           width: "100%",
           color: "text.primary",
           bgcolor: "background.paper",
+          display: "flex",
+          flexDirection: "column",
+          gap: 1,
         }}
       >
-        <Typography gutterBottom variant="h6" component="div">
+        <Typography gutterBottom variant="h5" component="div">
           {name}
         </Typography>
         <Typography variant="body2">
           <span style={{ fontWeight: 500 }}>population:</span>
-          <span
-            style={{
+          <Typography
+            component="span"
+            sx={{
               fontWeight: 200,
-              marginLeft: 4,
-              color: "text.primary",
+              marginLeft: 0.5,
+              color: "text.secondary",
             }}
           >
             {population}
-          </span>
+          </Typography>
         </Typography>
         <Typography variant="body2">
           <span style={{ fontWeight: 500 }}>region:</span>
-          <span
-            style={{
+          <Typography
+            component="span"
+            sx={{
               fontWeight: 200,
-              marginLeft: 4,
-              color: "text.primary",
+              marginLeft: 0.5,
+              color: "text.secondary",
             }}
           >
             {region}
-          </span>
+          </Typography>
         </Typography>
         <Typography variant="body2">
           <span style={{ fontWeight: 500 }}>capital:</span>
-          <span
-            style={{
+          <Typography
+            component="span"
+            sx={{
               fontWeight: 200,
-              marginLeft: 4,
-              color: "text.primary",
+              marginLeft: 0.5,
+              color: "text.secondary",
             }}
           >
             {capital || "No capital"}
-          </span>
+          </Typography>
         </Typography>
       </CardContent>
     </Card>

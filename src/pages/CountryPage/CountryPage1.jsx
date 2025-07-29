@@ -2,19 +2,17 @@ import React from "react";
 import data from "../../data/data.json";
 import { useParams } from "react-router-dom";
 //helpers
-// import { formatPopulation } from "../../utils/helpers";
+import { formatPopulation } from "../../utils/helpers";
 //mui >>
 import { useNavigate } from "react-router-dom";
 import { Box, Button, Stack } from "@mui/material";
-import { useTheme } from "@mui/material/styles";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
-import { formatPopulation } from "../../utils/helpers";
-// _______________________________________________________
 
+// _______________________________________________________
 export default function CountryPage() {
   //parameters-------
   const { alpha3Code } = useParams();
@@ -52,68 +50,21 @@ export default function CountryPage() {
       {borderCountry.name}
     </Button>
   ));
-  // useTheme --------------
-  const theme = useTheme();
-  // info list ----------
-  const infoItems = [
-    {
-      label: "Native Name",
-      value: country?.nativeName || "null",
-    },
-    {
-      label: "Population",
-      value: formatPopulation(country?.population),
-    },
-    {
-      label: "Region",
-      value: country?.region || "null",
-    },
-    {
-      label: "Sub Region",
-      value: country?.subregion || "null",
-    },
-    {
-      label: "Capital",
-      value: country?.capital || "null",
-    },
-    {
-      label: "Top Level Domain",
-      value: country?.topLevelDomain?.join(", ") || "null",
-    },
-    {
-      label: "Currencies",
-      value: country?.currencies?.map((c) => c.name).join(", ") || "null",
-    },
-    {
-      label: "Languages",
-      value: country?.languages?.map((l) => l.name).join(", ") || "null",
-    },
-  ];
-
-  // info handler ---------
-  const InfoItem = ({ label, value }) => (
-    <Typography variant="body2" sx={{ mb: 1 }}>
-      <span style={infoLablStyle}>{label}:</span>
-      <span style={infoValueStyle}>{value}</span>
-    </Typography>
-  );
-  //To display in two columns
-  const leftColumnItems = infoItems.slice(0, 5);
-  const rightColumnItems = infoItems.slice(5);
+//>>>>>>>>>>>>>>>>>>>>>
   // mui thems----------------------
   const infoLablStyle = {
     fontWeight: { xs: 200, md: 900 },
     textTransform: "capitalize",
     lineHeight: 2,
-    color: theme.palette.text.primary,
+    color: "text.primary",
   };
 
   const infoValueStyle = {
     fontWeight: 200,
     marginLeft: 4,
-    color: theme.palette.text.secondary,
+    color: "text.secondary",
   };
-
+//<<<<<<<<<<<<<<<<<<<<<<,,,,
   const cardContentStyle = {
     width: { xs: "100%", md: "50%" },
     height: { md: "100%" },
@@ -169,6 +120,7 @@ export default function CountryPage() {
         </Button>
       </Box>
       {/* card box -------- */}
+
       <Card
         sx={{
           width: "100%",
@@ -181,7 +133,6 @@ export default function CountryPage() {
           bgcolor: "background.default",
         }}
       >
-        {" "}
         <CardMedia
           component="img"
           sx={{
@@ -211,29 +162,163 @@ export default function CountryPage() {
           {/* info box-------- */}
           <Box
             sx={{
+              width: "100%",
               display: "flex",
               flexDirection: { xs: "column", sm: "row" },
-              justifyContent: "space-between",
-              gap: 4,
+              justifyContent: { md: "space-between" },
             }}
           >
-            <Box sx={{ width: { xs: "100%", sm: "50%" } }}>
-              {leftColumnItems.map((item) => (
-                <InfoItem
-                  key={item.label}
-                  label={item.label}
-                  value={item.value}
-                />
-              ))}
+            <Box
+              sx={{
+                width: "50%",
+                height: "80%",
+              }}
+            >
+              <Typography variant="body2" sx={{}}>
+                <span
+                  style={{
+                    ...infoLablStyle,
+                  }}
+                >
+                  native Name:
+                </span>
+                <Typography
+                  component="span"
+                  style={{
+                    // ...infoValueStyle,
+
+                    fontWeight: 200,
+                    marginLeft: 0.5,
+                    color: "text.secondary",
+                  }}
+                >
+                  {country?.nativeName || "null"}
+                </Typography>
+              </Typography>
+
+              <Typography variant="body2">
+                <span
+                  style={{
+                    ...infoLablStyle,
+                  }}
+                >
+                  population:
+                </span>
+                <span
+                  style={{
+                    ...infoValueStyle,
+                  }}
+                >
+                  {formatPopulation(country?.population)}
+                </span>
+              </Typography>
+              <Typography variant="body2">
+                <span
+                  style={{
+                    ...infoLablStyle,
+                  }}
+                >
+                  region:
+                </span>
+                <span
+                  style={{
+                    ...infoValueStyle,
+                  }}
+                >
+                  {country?.region}
+                </span>
+              </Typography>
+              <Typography variant="body2">
+                <span
+                  style={{
+                    ...infoLablStyle,
+                  }}
+                >
+                  sub Region:
+                </span>
+                <span
+                  style={{
+                    ...infoValueStyle,
+                  }}
+                >
+                  {country?.subregion}
+                </span>
+              </Typography>
+              <Typography variant="body2">
+                <span
+                  style={{
+                    ...infoLablStyle,
+                  }}
+                >
+                  capital:
+                </span>
+                <span
+                  style={{
+                    ...infoValueStyle,
+                  }}
+                >
+                  {country?.capital || "null"}
+                </span>
+              </Typography>
             </Box>
-            <Box sx={{ width: { xs: "100%", sm: "50%" } }}>
-              {rightColumnItems.map((item) => (
-                <InfoItem
-                  key={item.label}
-                  label={item.label}
-                  value={item.value}
-                />
-              ))}
+            <Box
+              sx={{
+                mt: { xs: 4, md: 0 }, //===
+                width: "50%",
+                height: "80%",
+              }}
+            >
+              <Typography variant="body2">
+                <span
+                  style={{
+                    ...infoLablStyle,
+                  }}
+                >
+                  topLevelDomain:
+                </span>
+                <span
+                  style={{
+                    ...infoValueStyle,
+                  }}
+                >
+                  {/* is array >join with = " ,  " */}
+                  {country?.topLevelDomain?.join(", ") || "null"}
+                </span>
+              </Typography>
+              <Typography variant="body2">
+                <span
+                  style={{
+                    ...infoLablStyle,
+                  }}
+                >
+                  currencies:
+                </span>
+                <span
+                  style={{
+                    ...infoValueStyle,
+                  }}
+                >
+                  {/* is array > map names > join with ", " */}
+                  {country?.currencies?.map((c) => c.name).join(", ") || "null"}
+                </span>
+              </Typography>
+              <Typography variant="body2">
+                <span
+                  style={{
+                    ...infoLablStyle,
+                  }}
+                >
+                  languages:
+                </span>
+                <span
+                  style={{
+                    ...infoValueStyle,
+                  }}
+                >
+                  {/* is array > map names > join with ", " */}
+                  {country?.languages?.map((l) => l.name).join(", ") || "null"}
+                </span>
+              </Typography>
             </Box>
           </Box>
           {/* border btn --------- */}

@@ -92,7 +92,7 @@ export default function HomePage() {
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">
-                <SearchIcon sx={{ color: "#bdbdbd" }} />
+                <SearchIcon sx={{ color: "text.primary" }} />
               </InputAdornment>
             ),
           }}
@@ -104,7 +104,7 @@ export default function HomePage() {
             pb: "12px",
             width: { xs: "100%", md: "40%" },
             "& .MuiInputBase-input": {
-              color: "text.primary",
+              color: "red",
             },
             "& .MuiInputLabel-root": {
               color: "text.primary",
@@ -191,7 +191,6 @@ export default function HomePage() {
       {/* body box --------------- */}
       <Box
         sx={{
-      
           display: "flex",
           flexDirection: "row",
           flexWrap: "wrap",

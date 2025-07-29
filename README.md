@@ -1,12 +1,26 @@
-# React + Vite
+🌍 نمایش اطلاعات کشورها
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+💡 این پروژه صرفاً جهت تمرین و ارزیابی مهارت طراحی رابط کاربری با React توسعه داده شده است.
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+ 📌 ویژگی‌های پروژه
+- نمایش لیست تمام کشورها در صفحه اصلی
+- جستجوی کشور بر اساس نام
+- فیلتر کشورها بر اساس ناحیه (Region)
+- نمایش اطلاعات کامل هر کشور در صفحه‌ای جداگانه
+- امکان مشاهده کشورهای هم‌مرز
+- **light and dark mode*
+- **طراحی کاملاً ریسپانسیو** برای موبایل و دسکتاپ
+- تم پروژه به صورت کاملاً مجزا و قابل کنترل در پوشه themes/ تعریف شده.  
+- استفاده از React و مدیریت حالت با Context API
 
-## Expanding the ESLint configuration
+🎨 طراحی رابط کاربری
+طراحی رابط کاربری بر اساس تصاویر JPG (دسکتاپ و موبایل در هر دو حالت تاریک و روشن) انجام شده. اندازه‌ها و فاصله‌ها به صورت تقریبی بر اساس بهترین تشخیص شخصی انتخاب شده‌اند.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+⚙️ تکنولوژی‌های استفاده شده
+React
+JavaScript
+Context API
+MUI (Material UI)
+CSS-in-JS
+Vite
