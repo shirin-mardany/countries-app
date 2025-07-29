@@ -1,8 +1,7 @@
 import React from "react";
 import data from "../../data/data.json";
 import { useParams } from "react-router-dom";
-//helpers
-// import { formatPopulation } from "../../utils/helpers";
+
 //mui >>
 import { useNavigate } from "react-router-dom";
 import { Box, Button, Stack } from "@mui/material";
@@ -12,6 +11,8 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
+
+// helper >>
 import { formatPopulation } from "../../utils/helpers";
 // _______________________________________________________
 
@@ -20,7 +21,7 @@ export default function CountryPage() {
   const { alpha3Code } = useParams();
 
   //navigation-------------
-  const navigate = useNavigate(); //back to home
+  const navigate = useNavigate();
 
   //find the country data based on alpha3Code ------------
   const country = data.find((c) => c.alpha3Code === alpha3Code);
@@ -91,29 +92,52 @@ export default function CountryPage() {
   ];
 
   // info handler ---------
-  const InfoItem = ({ label, value }) => (
-    <Typography variant="body2" sx={{ mb: 1 }}>
-      <span style={infoLablStyle}>{label}:</span>
-      <span style={infoValueStyle}>{value}</span>
+const InfoItem = ({ label, value }) => {   return (
+  <Box sx={infoWrapperStyle}>
+    <Typography component="span" sx={infoLabelStyle(theme)}>
+      {label}:
     </Typography>
+    <Typography component="span" sx={infoValueStyle(theme)}>
+      {value}
+    </Typography>
+  </Box>
   );
+  }
+  
   //To display in two columns
   const leftColumnItems = infoItems.slice(0, 5);
   const rightColumnItems = infoItems.slice(5);
+  
   // mui thems----------------------
-  const infoLablStyle = {
-    fontWeight: { xs: 200, md: 900 },
-    textTransform: "capitalize",
-    lineHeight: 2,
-    color: theme.palette.text.primary,
-  };
+const infoWrapperStyle = {
+  display: "flex",
+  flexWrap: "nowrap",
+  alignItems: "center",
+  gap: 1,
+  mb: 1.5,
+  lineHeight: 1.8,
+  width: "100%",
+  overflow: "hidden",
+};
 
-  const infoValueStyle = {
-    fontWeight: 200,
-    marginLeft: 4,
-    color: theme.palette.text.secondary,
-  };
+const infoLabelStyle = (theme) => ({
+  fontWeight: theme.typography.fontWeightMedium,
+  textTransform: "capitalize",
+  color: theme.palette.text.primary,
+  minWidth: "110px",
+  fontSize: theme.typography.fontSize16,
+});
 
+const infoValueStyle = (theme) => ({
+  color: theme.palette.text.secondary,
+  fontSize: theme.typography.fontSize14,
+  flex: 1,
+  minWidth: 0,
+  whiteSpace: "nowrap",
+  overflow: "hidden",
+  textOverflow: "ellipsis",
+});
+// -------
   const cardContentStyle = {
     width: { xs: "100%", md: "50%" },
     height: { md: "100%" },
@@ -151,7 +175,7 @@ export default function CountryPage() {
           height: "10%",
           display: "flex",
           justifyContent: "flex-start",
-          mb: { xs: 7, md: 0 }, //===
+          mb: { xs: 7, md: 0 },
         }}
       >
         <Button
@@ -181,7 +205,6 @@ export default function CountryPage() {
           bgcolor: "background.default",
         }}
       >
-        {" "}
         <CardMedia
           component="img"
           sx={{

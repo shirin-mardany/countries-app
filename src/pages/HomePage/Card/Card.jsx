@@ -3,7 +3,7 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
-
+import { useTheme } from "@emotion/react";
 
 export default function CountryCard({
   name,
@@ -12,7 +12,8 @@ export default function CountryCard({
   population,
   img,
 }) {
-
+  // useTheme --------------
+  const theme = useTheme();
 
   return (
     <Card
@@ -43,47 +44,60 @@ export default function CountryCard({
           gap: 1,
         }}
       >
-        <Typography gutterBottom variant="h5" component="div">
+        <Typography
+          gutterBottom
+          variant="h5"
+          component="div"
+          sx={{
+            color: "text.primary",
+          }}
+        >
           {name}
         </Typography>
+
         <Typography variant="body2">
-          <span style={{ fontWeight: 500 }}>population:</span>
-          <Typography
-            component="span"
-            sx={{
-              fontWeight: 200,
-              marginLeft: 0.5,
-              color: "text.secondary",
+          <span style={{ fontWeight: theme.typography.fontWeightMedium }}>
+            Population:
+          </span>
+          <span
+            style={{
+              fontWeight: theme.typography.fontWeightLight,
+              marginLeft: 4,
+              color: theme.palette.text.secondary,
             }}
           >
             {population}
-          </Typography>
+          </span>
         </Typography>
+
         <Typography variant="body2">
-          <span style={{ fontWeight: 500 }}>region:</span>
-          <Typography
-            component="span"
-            sx={{
-              fontWeight: 200,
-              marginLeft: 0.5,
-              color: "text.secondary",
+          <span style={{ fontWeight: theme.typography.fontWeightMedium }}>
+            region:
+          </span>
+          <span
+            style={{
+              fontWeight: theme.typography.fontWeightLight,
+              marginLeft: 4,
+              color: theme.palette.text.secondary,
             }}
           >
             {region}
-          </Typography>
+          </span>
         </Typography>
+
         <Typography variant="body2">
-          <span style={{ fontWeight: 500 }}>capital:</span>
-          <Typography
-            component="span"
-            sx={{
-              fontWeight: 200,
-              marginLeft: 0.5,
-              color: "text.secondary",
+          <span style={{ fontWeight: theme.typography.fontWeightMedium }}>
+            capital:
+          </span>
+          <span
+            style={{
+              fontWeight: theme.typography.fontWeightLight,
+              marginLeft: 4,
+              color: theme.palette.text.secondary,
             }}
           >
             {capital || "No capital"}
-          </Typography>
+          </span>
         </Typography>
       </CardContent>
     </Card>
